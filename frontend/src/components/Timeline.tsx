@@ -21,17 +21,17 @@ function groupByYear(entries: TimelineEntry[]): YearGroup[] {
 
 function dotColor(type: TimelineEntry['type']) {
   switch (type) {
-    case 'project':   return 'bg-primary-container shadow-[0_0_10px_rgba(200,241,53,0.3)]'
-    case 'career':    return 'bg-secondary shadow-[0_0_10px_rgba(232,168,56,0.3)]'
-    case 'education': return 'bg-[#75d1ff] shadow-[0_0_10px_rgba(117,209,255,0.3)]'
+    case 'project':   return 'bg-accent shadow-[0_0_12px_rgba(99,102,241,0.4)]'
+    case 'career':    return 'bg-accent-cyan shadow-[0_0_12px_rgba(6,182,212,0.4)]'
+    case 'education': return 'bg-accent-emerald shadow-[0_0_12px_rgba(16,185,129,0.4)]'
   }
 }
 
 function titleColor(type: TimelineEntry['type']) {
   switch (type) {
-    case 'project':   return 'text-acid'
-    case 'career':    return 'text-secondary'
-    case 'education': return 'text-[#75d1ff]'
+    case 'project':   return 'text-accent'
+    case 'career':    return 'text-accent-cyan'
+    case 'education': return 'text-accent-emerald'
   }
 }
 
@@ -60,30 +60,29 @@ export default function Timeline() {
 
   return (
     <section id="timeline" ref={ref} className="reveal max-w-7xl mx-auto px-8 pl-10 md:px-16 md:pl-24 lg:px-20 lg:pl-32 pt-40 pb-40">
-      {/* Section divider */}
-      <div className="flex items-center gap-4 mb-6">
-        <div className="w-12 h-[1px] bg-primary-container" />
-        <span className="font-mono text-[10px] text-outline uppercase tracking-widest">Section_03</span>
-        <div className="flex-grow h-[1px] bg-outline-variant/50" />
+      <div className="section-divider">
+        <div className="line w-12" />
+        <span className="label">Full Record</span>
+        <div className="line flex-grow opacity-30" />
       </div>
 
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
-        <div className="max-w-2xl">
-          <h2 className="font-display text-4xl text-primary mb-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+        <div>
+          <h2 className="font-display text-4xl md:text-5xl text-primary font-bold mb-3">
             ALL WORK
           </h2>
-          <p className="font-mono text-acid text-sm uppercase tracking-widest">The Full Record.</p>
+          <p className="font-mono text-accent text-sm tracking-wider">The Full Record.</p>
         </div>
         <div className="flex flex-wrap gap-2 font-mono text-xs">
           {filters.map((f) => (
             <button
               key={f.key}
               onClick={() => setFilter(f.key)}
-              className={`px-6 py-2 border transition-colors ${
+              className={`cursor-pointer px-5 py-2 rounded-lg border transition-all duration-300 ${
                 filter === f.key
-                  ? 'bg-primary-container text-on-primary-container border-primary-container'
-                  : 'border-outline-variant text-outline hover:border-secondary hover:text-secondary'
+                  ? 'bg-accent text-white border-accent shadow-[0_4px_20px_rgba(99,102,241,0.2)]'
+                  : 'border-outline-variant text-outline hover:border-accent/30 hover:text-accent hover:bg-accent-light'
               }`}
             >
               {f.label}
@@ -92,39 +91,36 @@ export default function Timeline() {
         </div>
       </div>
 
-      {/* Legend (before timeline for context) */}
-      <div className="mb-16 p-5 bg-white border border-outline-variant inline-flex gap-10 font-mono text-xs">
+      {/* Legend */}
+      <div className="mb-16 glass rounded-xl px-6 py-4 inline-flex gap-8 font-mono text-xs">
         <div className="flex items-center gap-3">
-          <span className="w-3 h-3 rounded-full bg-primary-container shadow-[0_0_8px_rgba(200,241,53,0.4)]" />
-          <span className="text-on-surface-variant uppercase tracking-wider">Projects</span>
-          <span className="text-outline ml-1">← Left rail</span>
+          <span className="w-3 h-3 rounded-full bg-accent shadow-[0_0_8px_rgba(99,102,241,0.4)]" />
+          <span className="text-on-surface-variant">Projects</span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_rgba(232,168,56,0.4)]" />
-          <span className="text-on-surface-variant uppercase tracking-wider">Career</span>
-          <span className="text-outline ml-1">→ Right rail</span>
+          <span className="w-3 h-3 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(6,182,212,0.4)]" />
+          <span className="text-on-surface-variant">Career</span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="w-3 h-3 rounded-full bg-[#75d1ff] shadow-[0_0_8px_rgba(117,209,255,0.4)]" />
-          <span className="text-on-surface-variant uppercase tracking-wider">Education</span>
-          <span className="text-outline ml-1">→ Right rail</span>
+          <span className="w-3 h-3 rounded-full bg-accent-emerald shadow-[0_0_8px_rgba(16,185,129,0.4)]" />
+          <span className="text-on-surface-variant">Education</span>
         </div>
       </div>
 
       {/* Dual-rail timeline */}
       <div className="relative min-h-[400px] py-16">
         {/* Center spine */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-outline-variant md:-translate-x-1/2" />
+        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/30 via-accent-cyan/20 to-accent-emerald/30 md:-translate-x-1/2" />
 
-        <div className="relative space-y-32 md:space-y-44">
+        <div className="relative space-y-32 md:space-y-40">
           {groups.map((group) => (
             <div key={group.year} className="relative">
               {/* Year marker */}
-              <div className="absolute left-4 md:left-1/2 -translate-x-1/2 -top-10 bg-background px-4 font-mono text-on-surface border border-outline-variant py-1 text-sm z-10">
-                [ {group.year} ]
+              <div className="absolute left-4 md:left-1/2 -translate-x-1/2 -top-10 glass-strong rounded-lg px-4 py-1.5 font-mono text-sm text-primary font-medium z-10">
+                {group.year}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-28 items-start">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
                 {/* Left rail: projects */}
                 <div className="md:text-right space-y-16 pl-10 md:pl-0">
                   {group.items
@@ -132,47 +128,43 @@ export default function Timeline() {
                     .map((item) => (
                       <div
                         key={item.id}
-                        className={`relative transition-opacity duration-300 ${isDimmed(item) ? 'opacity-20' : 'opacity-100'}`}
+                        className={`relative transition-all duration-500 ${isDimmed(item) ? 'opacity-15 scale-[0.98]' : 'opacity-100 scale-100'}`}
                       >
                         <button
                           className="group cursor-pointer text-left md:text-right w-full"
                           onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                         >
-                          <h3 className={`font-display text-2xl md:text-3xl mb-2 group-hover:text-secondary transition-colors ${titleColor(item.type)}`}>
+                          <h3 className={`font-display text-2xl md:text-3xl font-bold mb-2 group-hover:text-accent transition-colors duration-300 ${titleColor(item.type)}`}>
                             {item.title}
                           </h3>
-                          <p className="font-mono text-xs text-outline mb-3 uppercase tracking-tighter">
+                          <p className="font-mono text-xs text-outline mb-3 uppercase tracking-wider">
                             {item.org}
                           </p>
-                          <p className="text-on-surface-variant text-sm max-w-sm md:ml-auto">
+                          <p className="text-on-surface-variant text-sm max-w-sm md:ml-auto leading-relaxed">
                             {item.blurb}
                           </p>
                           {item.techStack && (
                             <div className="mt-3 flex flex-wrap md:justify-end gap-2">
                               {item.techStack.map((t) => (
-                                <span key={t} className="text-[10px] font-mono border border-outline-variant px-2 py-0.5 text-outline">
-                                  {t}
-                                </span>
+                                <span key={t} className="tag-pill text-[9px]">{t}</span>
                               ))}
                             </div>
                           )}
                         </button>
 
-                        {/* Expanded detail */}
                         {expandedId === item.id && (
-                          <div className="mt-4 p-4 bg-surface-container-high border border-outline-variant text-left">
+                          <div className="mt-4 glass rounded-xl p-5 text-left">
                             <p className="text-sm text-on-surface-variant leading-relaxed">{item.detail}</p>
                             {item.metric && (
-                              <div className="mt-3 font-mono text-xs">
-                                <span className="text-outline">{item.metric.label}: </span>
-                                <span className="text-acid font-bold">{item.metric.value}</span>
+                              <div className="mt-4 font-mono text-xs flex items-center gap-2">
+                                <span className="text-outline">{item.metric.label}:</span>
+                                <span className="text-accent font-bold text-sm">{item.metric.value}</span>
                               </div>
                             )}
                           </div>
                         )}
 
-                        {/* Connector dot */}
-                        <div className={`absolute -left-[18px] md:left-auto md:-right-[56px] top-3 w-4 h-4 rounded-full border-4 border-background transition-transform hover:scale-150 ${dotColor(item.type)}`} />
+                        <div className={`absolute -left-[18px] md:left-auto md:-right-[52px] top-3 w-4 h-4 rounded-full border-4 border-background transition-all duration-300 hover:scale-150 ${dotColor(item.type)}`} />
                       </div>
                     ))}
                 </div>
@@ -184,46 +176,43 @@ export default function Timeline() {
                     .map((item) => (
                       <div
                         key={item.id}
-                        className={`relative transition-opacity duration-300 ${isDimmed(item) ? 'opacity-20' : 'opacity-100'}`}
+                        className={`relative transition-all duration-500 ${isDimmed(item) ? 'opacity-15 scale-[0.98]' : 'opacity-100 scale-100'}`}
                       >
                         <button
                           className="group cursor-pointer text-left w-full"
                           onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                         >
-                          <h3 className={`font-display text-2xl md:text-3xl mb-2 group-hover:text-primary-container transition-colors ${titleColor(item.type)}`}>
+                          <h3 className={`font-display text-2xl md:text-3xl font-bold mb-2 group-hover:text-accent transition-colors duration-300 ${titleColor(item.type)}`}>
                             {item.title}
                           </h3>
-                          <p className="font-mono text-xs text-outline mb-3 uppercase tracking-tighter">
+                          <p className="font-mono text-xs text-outline mb-3 uppercase tracking-wider">
                             {item.org}
                           </p>
-                          <p className="text-on-surface-variant text-sm max-w-sm">
+                          <p className="text-on-surface-variant text-sm max-w-sm leading-relaxed">
                             {item.blurb}
                           </p>
                         </button>
 
                         {expandedId === item.id && (
-                          <div className="mt-4 p-4 bg-surface-container-high border border-outline-variant">
+                          <div className="mt-4 glass rounded-xl p-5">
                             <p className="text-sm text-on-surface-variant leading-relaxed">{item.detail}</p>
                             {item.metric && (
-                              <div className="mt-3 font-mono text-xs">
-                                <span className="text-outline">{item.metric.label}: </span>
-                                <span className="text-secondary font-bold">{item.metric.value}</span>
+                              <div className="mt-4 font-mono text-xs flex items-center gap-2">
+                                <span className="text-outline">{item.metric.label}:</span>
+                                <span className="text-accent-cyan font-bold text-sm">{item.metric.value}</span>
                               </div>
                             )}
                             {item.techStack && (
                               <div className="mt-3 flex flex-wrap gap-2">
                                 {item.techStack.map((t) => (
-                                  <span key={t} className="text-[10px] font-mono border border-outline-variant px-2 py-0.5 text-outline">
-                                    {t}
-                                  </span>
+                                  <span key={t} className="tag-pill text-[9px]">{t}</span>
                                 ))}
                               </div>
                             )}
                           </div>
                         )}
 
-                        {/* Connector dot */}
-                        <div className={`absolute -left-[18px] md:-left-[56px] top-3 w-4 h-4 rounded-full border-4 border-background transition-transform hover:scale-150 ${dotColor(item.type)}`} />
+                        <div className={`absolute -left-[18px] md:-left-[52px] top-3 w-4 h-4 rounded-full border-4 border-background transition-all duration-300 hover:scale-150 ${dotColor(item.type)}`} />
                       </div>
                     ))}
                 </div>
@@ -235,14 +224,13 @@ export default function Timeline() {
 
       {/* End marker */}
       <div className="mt-24 flex items-center justify-center gap-4">
-        <div className="h-[1px] w-16 bg-outline-variant" />
+        <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent/30" />
         <span className="font-mono text-[10px] text-outline uppercase tracking-widest">End of Record</span>
-        <div className="h-[1px] w-16 bg-outline-variant" />
+        <div className="h-px w-16 bg-gradient-to-l from-transparent to-accent/30" />
       </div>
 
-      {/* Interaction hint */}
       <p className="mt-6 text-center font-mono text-[10px] text-outline/60">
-        Click any entry to expand details · Use filters above to focus
+        Click any entry to expand details
       </p>
     </section>
   )

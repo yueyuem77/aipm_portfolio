@@ -9,38 +9,43 @@ import ClickSpark from './components/selectspark'
 export default function App() {
   return (
     <ClickSpark
-      sparkColor="#C8F135"
-      sparkSize={10}
-      sparkRadius={15}
+      sparkColor="#6366F1"
+      sparkSize={12}
+      sparkRadius={20}
       sparkCount={8}
-      duration={400}
+      duration={500}
     >
-      {/* Global overlays */}
-      <div className="fixed inset-0 scanline z-[60] opacity-30" />
-      <div className="fixed top-[-200px] right-[-100px] w-[600px] h-[600px] glow-amber opacity-10 z-0" />
+      {/* Ambient background layers */}
+      <div className="mesh-gradient" />
+      <div className="dot-grid" />
+      <div className="grain" />
+
+      {/* Floating orbs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
+      </div>
 
       <Navbar />
 
       <main className="relative z-10 pb-20">
         <Hero />
 
-        {/* ── Spacer ── */}
-        <div className="max-w-7xl mx-auto px-8 pl-10 md:px-16 md:pl-24 lg:px-20 lg:pl-32 py-8">
-          <div className="h-[1px] w-full bg-outline-variant" />
+        <div className="max-w-7xl mx-auto px-8 pl-10 md:px-16 md:pl-24 lg:px-20 lg:pl-32 py-4">
+          <div className="h-px w-full bg-gradient-to-r from-accent/20 via-accent-cyan/20 to-transparent" />
         </div>
 
         <WhoIAm />
 
-        {/* ── Spacer ── */}
-        <div className="max-w-7xl mx-auto px-8 pl-10 md:px-16 md:pl-24 lg:px-20 lg:pl-32 py-8">
-          <div className="h-[1px] w-full bg-outline-variant" />
+        <div className="max-w-7xl mx-auto px-8 pl-10 md:px-16 md:pl-24 lg:px-20 lg:pl-32 py-4">
+          <div className="h-px w-full bg-gradient-to-r from-accent-cyan/20 via-accent-emerald/20 to-transparent" />
         </div>
 
         <SelectedWork />
 
-        {/* ── Spacer ── */}
-        <div className="max-w-7xl mx-auto px-8 pl-10 md:px-16 md:pl-24 lg:px-20 lg:pl-32 py-8">
-          <div className="h-[1px] w-full bg-outline-variant" />
+        <div className="max-w-7xl mx-auto px-8 pl-10 md:px-16 md:pl-24 lg:px-20 lg:pl-32 py-4">
+          <div className="h-px w-full bg-gradient-to-r from-accent-emerald/20 via-accent/20 to-transparent" />
         </div>
 
         <Timeline />

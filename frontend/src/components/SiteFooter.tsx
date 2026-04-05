@@ -2,48 +2,48 @@ import { contact, hero } from '../data/siteData'
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-white border-t border-outline-variant py-16 px-8 md:px-16 lg:px-20">
-      <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto pl-2 md:pl-8 lg:pl-12">
-        <div className="mb-8 md:mb-0">
-          <div className="text-lg font-bold text-on-surface font-mono tracking-tighter">
-            LUNA · AI Product Manager
+    <footer className="relative z-10 border-t border-outline-variant py-16 px-8 md:px-16 lg:px-20">
+      <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto pl-2 md:pl-8 lg:pl-12 gap-8">
+        <div>
+          <div className="text-lg font-bold text-primary font-display tracking-tight">
+            LUNA
           </div>
-          <p className="text-on-surface/40 font-mono text-[10px] uppercase mt-2">
-            © {new Date().getFullYear()} LUNA [TERMINAL_CURATOR]
+          <p className="text-outline font-mono text-[10px] uppercase mt-2 tracking-wider">
+            &copy; {new Date().getFullYear()} Luna &middot; AI Product Manager
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 font-mono text-xs uppercase text-on-surface/60">
+        <div className="flex flex-wrap justify-center gap-6 font-mono text-xs uppercase">
           <a
             href={contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-secondary underline decoration-dotted transition-all ease-in-out"
+            className="cursor-pointer text-on-surface-variant hover:text-accent transition-colors duration-300"
           >
-            LINKEDIN
+            LinkedIn
           </a>
           <a
             href={contact.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-secondary underline decoration-dotted transition-all ease-in-out"
+            className="cursor-pointer text-on-surface-variant hover:text-accent transition-colors duration-300"
           >
-            GITHUB
+            GitHub
           </a>
           <a
             href={`mailto:${contact.email}`}
-            className="hover:text-secondary underline decoration-dotted transition-all ease-in-out"
+            className="cursor-pointer text-on-surface-variant hover:text-accent transition-colors duration-300"
           >
-            EMAIL
+            Email
           </a>
-          <span className="text-on-surface/40">{contact.wechatLabel}</span>
+          <span className="text-outline">{contact.wechatLabel}</span>
           <a
             href={hero.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-acid font-bold hover:text-secondary transition-all ease-in-out"
+            className="cursor-pointer text-accent font-medium hover:text-accent-cyan transition-colors duration-300"
           >
-            → Download Resume
+            Download Resume
           </a>
         </div>
       </div>
