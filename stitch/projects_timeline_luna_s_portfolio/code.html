@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUNA | PROJECTS [THE_FULL_RECORD]</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#fdba49",
+                      "background": "#0f0e0c",
+                      "secondary-fixed-dim": "#fdba49",
+                      "surface-dim": "#141311",
+                      "on-primary-fixed-variant": "#3d4d00",
+                      "on-primary-fixed": "#171e00",
+                      "on-tertiary-fixed": "#001e2b",
+                      "surface": "#141311",
+                      "on-error": "#690005",
+                      "tertiary": "#fefeff",
+                      "on-secondary-fixed": "#281800",
+                      "surface-variant": "#363432",
+                      "on-surface-variant": "#c5c9ae",
+                      "surface-container": "#211f1d",
+                      "on-secondary-fixed-variant": "#614000",
+                      "on-tertiary-container": "#006c8f",
+                      "tertiary-fixed": "#c2e8ff",
+                      "primary-fixed-dim": "#aed50d",
+                      "inverse-on-surface": "#32302e",
+                      "outline": "#8f937b",
+                      "surface-container-high": "#2b2a27",
+                      "outline-variant": "#444934",
+                      "on-tertiary-fixed-variant": "#004d67",
+                      "surface-container-highest": "#363432",
+                      "surface-tint": "#aed50d",
+                      "on-secondary-container": "#3b2600",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed-dim": "#75d1ff",
+                      "inverse-primary": "#526600",
+                      "primary-container": "#c8f135",
+                      "on-surface": "#e6e2de",
+                      "tertiary-container": "#bfe7ff",
+                      "on-secondary": "#432c00",
+                      "surface-container-lowest": "#0f0e0c",
+                      "on-primary": "#293500",
+                      "surface-container-low": "#1d1b19",
+                      "on-tertiary": "#003548",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed": "#ffddaf",
+                      "on-primary-container": "#566c00",
+                      "surface-bright": "#3b3936",
+                      "inverse-surface": "#e6e2de",
+                      "on-background": "#e6e2de",
+                      "secondary-container": "#c08512",
+                      "error-container": "#93000a",
+                      "primary": "#ffffef",
+                      "primary-fixed": "#c9f236"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "4px",
+                      "xl": "8px",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["IBM Plex Sans"],
+                      "label": ["Space Grotesk"],
+                      "serif": ["DM Serif Display"],
+                      "mono": ["JetBrains Mono"]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.01));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        .dither-pattern {
+            background-image: radial-gradient(#c8f135 0.5px, transparent 0.5px);
+            background-size: 3px 3px;
+        }
+        .pixel-corner::before { content: ""; position: absolute; top: -2px; left: -2px; width: 4px; height: 4px; background: #c8f135; }
+        .pixel-corner::after { content: ""; position: absolute; bottom: -2px; right: -2px; width: 4px; height: 4px; background: #c8f135; }
+        .pixel-corner-rev::before { content: ""; position: absolute; top: -2px; right: -2px; width: 4px; height: 4px; background: #c8f135; }
+        .pixel-corner-rev::after { content: ""; position: absolute; bottom: -2px; left: -2px; width: 4px; height: 4px; background: #c8f135; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<div class="fixed inset-0 scanline-overlay pointer-events-none"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full flex justify-between items-center px-6 py-4 mx-auto bg-stone-950/80 backdrop-blur-md z-50 border-b border-white/10">
+<div class="text-2xl font-mono tracking-tighter text-lime-400">LUNA</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-lime-400 font-bold border-b-2 border-lime-400 pb-1 hover:text-amber-500 transition-colors duration-150" href="#">[PROCESS]</a>
+<a class="text-stone-500 font-mono hover:text-amber-500 transition-colors duration-150" href="#">[ARCHIVE]</a>
+<a class="text-stone-500 font-mono hover:text-amber-500 transition-colors duration-150" href="#">[MANIFESTO]</a>
+</div>
+<div class="flex items-center space-x-6">
+<span class="text-stone-500 font-mono text-xs">EN/CH</span>
+<button class="text-lime-400 font-mono text-sm border border-lime-400 px-4 py-1 hover:bg-lime-400 hover:text-black transition-all active:scale-95">→ Resume</button>
+</div>
+</nav>
+<main class="pt-24 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<h1 class="font-serif text-6xl md:text-8xl leading-none tracking-tight text-white mb-4">ALL WORK</h1>
+<p class="font-mono text-primary-container text-xl uppercase tracking-widest">The Full Record.</p>
+</div>
+<div class="flex flex-wrap gap-2 font-mono text-xs">
+<button class="bg-primary-container text-on-primary-container px-6 py-2 border border-primary-container">ALL</button>
+<button class="border border-white/10 text-stone-500 px-6 py-2 hover:border-secondary hover:text-secondary transition-colors">CAREER</button>
+<button class="border border-white/10 text-stone-500 px-6 py-2 hover:border-primary-container hover:text-primary-container transition-colors">PROJECTS</button>
+<button class="border border-white/10 text-stone-500 px-6 py-2 hover:border-tertiary-fixed-dim hover:text-tertiary-fixed-dim transition-colors">EDUCATION</button>
+</div>
+</header>
+<!-- Dual-Rail Vertical Timeline -->
+<section class="relative min-h-screen py-12">
+<!-- Center Spine -->
+<div class="absolute left-1/2 top-0 bottom-0 w-[2px] bg-white/10 -translate-x-1/2"></div>
+<!-- Year Markers & Items -->
+<div class="relative space-y-32">
+<!-- 2025 -->
+<div class="relative">
+<div class="absolute left-1/2 -translate-x-1/2 -top-10 bg-background px-4 font-mono text-white border border-white/20 py-1 text-sm z-10">
+                        [ 2025 ]
+                    </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-start">
+<!-- Left Rail: Project -->
+<div class="relative text-right pr-4 md:pr-0">
+<div class="inline-block group cursor-crosshair">
+<h3 class="font-serif text-3xl text-primary-container mb-2 group-hover:text-secondary transition-colors">Job Application Pipeline</h3>
+<p class="font-mono text-xs text-stone-500 mb-4 uppercase tracking-tighter">Claude Code · Boss直聘</p>
+<p class="text-stone-400 text-sm max-w-sm ml-auto">Automated personalized outreach system using agentic workflows.</p>
+<div class="mt-4 flex flex-wrap justify-end gap-2">
+<span class="text-[10px] font-mono border border-white/10 px-2 py-0.5 text-stone-500">Agentic workflow</span>
+<span class="text-[10px] font-mono border border-white/10 px-2 py-0.5 text-stone-500">Prompt engineering</span>
+</div>
+</div>
+<!-- Connector Dot -->
+<div class="absolute right-[-8.5px] top-4 w-4 h-4 rounded-full bg-primary-container border-4 border-background shadow-[0_0_10px_rgba(200,241,53,0.3)] transition-transform hover:scale-150"></div>
+</div>
+<div class="hidden md:block"></div>
+</div>
+</div>
+<!-- 2024–25 / 2024 -->
+<div class="relative">
+<div class="absolute left-1/2 -translate-x-1/2 -top-10 bg-background px-4 font-mono text-white border border-white/20 py-1 text-sm z-10">
+                        [ 2024 ]
+                    </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-start">
+<!-- Left Rail: Project -->
+<div class="relative text-right">
+<div class="inline-block group cursor-crosshair">
+<h3 class="font-serif text-3xl text-primary-container mb-2 group-hover:text-secondary transition-colors">Coffee Shop AI Agent</h3>
+<p class="font-mono text-xs text-stone-500 mb-4 uppercase tracking-tighter">Prophet · XGBoost · Streamlit</p>
+<p class="text-stone-400 text-sm max-w-sm ml-auto">Demand forecasting system with 3-model ensemble and domain expertise moat.</p>
+</div>
+<div class="absolute right-[-8.5px] top-4 w-4 h-4 rounded-full bg-primary-container border-4 border-background shadow-[0_0_10px_rgba(200,241,53,0.3)] transition-transform hover:scale-150"></div>
+</div>
+<!-- Right Rail: Career -->
+<div class="relative text-left pt-20 md:pt-0">
+<div class="inline-block group cursor-crosshair">
+<h3 class="font-serif text-3xl text-secondary mb-2 group-hover:text-primary-container transition-colors">AI PM Intern @ GradeMate</h3>
+<p class="font-mono text-xs text-stone-500 mb-4 uppercase tracking-tighter">Growth · Product Ops</p>
+<p class="text-stone-400 text-sm max-w-sm">Drove 23% user satisfaction increase through rigorous A/B testing and LLM refinement.</p>
+</div>
+<div class="absolute left-[-8.5px] top-4 w-4 h-4 rounded-full bg-secondary border-4 border-background shadow-[0_0_10px_rgba(253,186,73,0.3)] transition-transform hover:scale-150"></div>
+</div>
+</div>
+</div>
+<!-- 2023 -->
+<div class="relative">
+<div class="absolute left-1/2 -translate-x-1/2 -top-10 bg-background px-4 font-mono text-white border border-white/20 py-1 text-sm z-10">
+                        [ 2023 ]
+                    </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-start">
+<div class="hidden md:block"></div>
+<!-- Right Rail: Career -->
+<div class="relative text-left space-y-24">
+<div class="relative group cursor-crosshair">
+<h3 class="font-serif text-3xl text-secondary mb-2">Data Analyst Intern @ ADEL Group</h3>
+<p class="font-mono text-xs text-stone-500 mb-4 uppercase tracking-tighter">BI · Quant Methods</p>
+<p class="text-stone-400 text-sm max-w-sm">Cross-market business intelligence and applied quantitative analysis for global expansion.</p>
+<div class="absolute left-[-8.5px] top-4 w-4 h-4 rounded-full bg-secondary border-4 border-background transition-transform hover:scale-150"></div>
+</div>
+<div class="relative group cursor-crosshair">
+<h3 class="font-serif text-3xl text-secondary mb-2">Product Intern @ SF Technology</h3>
+<p class="font-mono text-xs text-stone-500 mb-4 uppercase tracking-tighter">Supply Chain · China Market</p>
+<p class="text-stone-400 text-sm max-w-sm">Acted as cross-functional bridge for high-scale logistics product development.</p>
+<div class="absolute left-[-8.5px] top-4 w-4 h-4 rounded-full bg-secondary border-4 border-background transition-transform hover:scale-150"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- 2022–23 -->
+<div class="relative">
+<div class="absolute left-1/2 -translate-x-1/2 -top-10 bg-background px-4 font-mono text-white border border-white/20 py-1 text-sm z-10">
+                        [ 2022–23 ]
+                    </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-start">
+<div class="hidden md:block"></div>
+<!-- Right Rail: Education -->
+<div class="relative text-left">
+<div class="inline-block group cursor-crosshair">
+<h3 class="font-serif text-3xl text-tertiary-fixed-dim mb-2 group-hover:text-white transition-colors">Graduate Research @ UC Irvine</h3>
+<p class="font-mono text-xs text-stone-500 mb-4 uppercase tracking-tighter">Cog Sci · Quantitative Methods</p>
+<p class="text-stone-400 text-sm max-w-sm">Deep academic foundation in human-centric cognitive science and statistical modeling.</p>
+</div>
+<div class="absolute left-[-8.5px] top-4 w-4 h-4 rounded-full bg-tertiary-fixed-dim border-4 border-background shadow-[0_0_10px_rgba(117,209,255,0.3)] transition-transform hover:scale-150"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Project Cards Grid -->
+<section class="mt-40 border-t border-white/10 pt-20">
+<div class="flex justify-between items-end mb-12">
+<h2 class="font-serif text-4xl text-white">[CORE_ARTIFACTS]</h2>
+<span class="font-mono text-xs text-stone-500">FILTER_RESULT: 02_PROJECTS</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Project Card 1 -->
+<div class="relative bg-surface-container-low p-8 pixel-corner border-l border-primary-container/20 group hover:bg-surface-container transition-all">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="w-full md:w-1/3 aspect-square bg-surface-container-highest overflow-hidden relative">
+<div class="absolute inset-0 dither-pattern opacity-30"></div>
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-70 group-hover:opacity-100 transition-opacity" data-alt="abstract technical visualization of a code repository with matrix-like numbers and green glowing terminals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcu1r_D0tsUPgSdFtLX7a6XNQFhoFiFGJghUgTP8o5qYGHNusXasv2bObmJbsnPRabVqfOT9HxJog1sQlt150FacxruKpjhBMS4bF9xuR4pMJ464h8fQig-BDm8EybmOjVQuoWErRj6RHOiK03qwFu5M7YDxOnVb0MMaJ0tK9qW5dnuB7epqgwV2fE0zG3Qv80W4tcJVWBtkrbg9fV_8H3ZjY1Q1VjSCe977gN7elRf8LKwcOFQXn7OhfVTgZJRB9OpZ8BTZM6GVs"/>
+</div>
+<div class="w-full md:w-2/3">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-[10px] text-primary-container bg-primary-container/10 px-2 py-0.5">LVL. 99 AUTOMATION</span>
+<span class="font-mono text-[10px] text-stone-500">2025.01</span>
+</div>
+<h3 class="font-serif text-3xl text-white mb-2">Job Application Pipeline</h3>
+<p class="text-sm text-stone-400 mb-6 font-body">Automated personalized outreach with Claude Code. High-precision agentic workflow for massive scaling.</p>
+<div class="grid grid-cols-2 gap-4 border-t border-white/10 pt-4">
+<div>
+<span class="block font-mono text-[10px] text-stone-500 uppercase">Efficiency</span>
+<div class="h-1 bg-white/10 mt-1 flex">
+<div class="h-full bg-primary-container w-[80%]"></div>
+</div>
+</div>
+<div>
+<span class="block font-mono text-[10px] text-stone-500 uppercase">Complexity</span>
+<div class="h-1 bg-white/10 mt-1 flex">
+<div class="h-full bg-primary-container w-[65%]"></div>
+</div>
+</div>
+</div>
+<button class="mt-6 font-mono text-xs text-primary-container group-hover:underline underline-offset-4 flex items-center">
+                                _VIEW_PROJECT <span class="ml-2">→</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="relative bg-surface-container-low p-8 pixel-corner-rev border-r border-primary-container/20 group hover:bg-surface-container transition-all">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="w-full md:w-1/3 aspect-square bg-surface-container-highest overflow-hidden relative">
+<div class="absolute inset-0 dither-pattern opacity-30"></div>
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-70 group-hover:opacity-100 transition-opacity" data-alt="close up of an espresso machine extraction with dramatic steam and dark moody coffee shop lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfbcBd3c4r-r1D2dnze87lr0PHPGTmblEzb1v9A64OQmhWnM5Y_8Co1WP1QVuoX7L7rqIYj3W4b1_34vwK1scUQR_k7AFQJPo6PVxFMhrY7smcOOtywtUJBajVWigVatBE29sito4DalS1lQ8Za26rLy3JWQKdTivo0BOhFNuwO3HBXxUkj83qwg-K4NMbZSaaibYcKvtDbKPEbffy2VJ0tf8ors_-PtO3M5-YTc3N-4MTbvemBThQ4IKFz3zZJPigrRPpyk_7ShQ"/>
+</div>
+<div class="w-full md:w-2/3">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-[10px] text-primary-container bg-primary-container/10 px-2 py-0.5">LVL. 92 FORECASTING</span>
+<span class="font-mono text-[10px] text-stone-500">2024.11</span>
+</div>
+<h3 class="font-serif text-3xl text-white mb-2">Coffee AI Agent</h3>
+<p class="text-sm text-stone-400 mb-6 font-body">XGBoost &amp; Prophet powered demand prediction. Domain expertise used as a structural moat.</p>
+<div class="grid grid-cols-2 gap-4 border-t border-white/10 pt-4">
+<div>
+<span class="block font-mono text-[10px] text-stone-500 uppercase">Accuracy</span>
+<div class="h-1 bg-white/10 mt-1 flex">
+<div class="h-full bg-primary-container w-[92%]"></div>
+</div>
+</div>
+<div>
+<span class="block font-mono text-[10px] text-stone-500 uppercase">Open Source</span>
+<div class="h-1 bg-white/10 mt-1 flex">
+<div class="h-full bg-primary-container w-[100%]"></div>
+</div>
+</div>
+</div>
+<button class="mt-6 font-mono text-xs text-primary-container group-hover:underline underline-offset-4 flex items-center">
+                                _VIEW_PROJECT <span class="ml-2">→</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-950 border-t border-white/5 py-12 px-6">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto gap-8">
+<div class="text-lg font-bold text-lime-400 font-mono tracking-tighter">LUNA</div>
+<div class="flex items-center space-x-12 font-mono text-[10px] text-stone-600 uppercase tracking-widest">
+<a class="hover:text-amber-500 underline decoration-dotted transition-all ease-in-out" href="#">GITHUB</a>
+<a class="hover:text-amber-500 underline decoration-dotted transition-all ease-in-out" href="#">LINKEDIN</a>
+<a class="hover:text-amber-500 underline decoration-dotted transition-all ease-in-out" href="#">READ_CV</a>
+</div>
+<div class="font-mono text-[10px] text-stone-600 uppercase tracking-widest">© 2024 LUNA [TERMINAL_CURATOR]</div>
+</div>
+</footer>
+<!-- Legend Overlay (Fixed Bottom) -->
+<div class="fixed bottom-6 right-6 z-40 bg-surface-container/80 backdrop-blur-sm border border-white/10 px-4 py-2 font-mono text-[10px] space-y-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="text-stone-400">PROJECTS</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-stone-400">CAREER</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="text-stone-400">EDUCATION</span>
+</div>
+</div>
+</body></html>

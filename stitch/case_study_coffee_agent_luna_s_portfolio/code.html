@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUNA | Coffee Shop AI Agent Case Study</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary": "#fdba49",
+                "background": "#141311",
+                "secondary-fixed-dim": "#fdba49",
+                "surface-dim": "#141311",
+                "on-primary-fixed-variant": "#3d4d00",
+                "on-primary-fixed": "#171e00",
+                "on-tertiary-fixed": "#001e2b",
+                "surface": "#141311",
+                "on-error": "#690005",
+                "tertiary": "#fefeff",
+                "on-secondary-fixed": "#281800",
+                "surface-variant": "#363432",
+                "on-surface-variant": "#c5c9ae",
+                "surface-container": "#211f1d",
+                "on-secondary-fixed-variant": "#614000",
+                "on-tertiary-container": "#006c8f",
+                "tertiary-fixed": "#c2e8ff",
+                "primary-fixed-dim": "#aed50d",
+                "inverse-on-surface": "#32302e",
+                "outline": "#8f937b",
+                "surface-container-high": "#2b2a27",
+                "outline-variant": "#444934",
+                "on-tertiary-fixed-variant": "#004d67",
+                "surface-container-highest": "#363432",
+                "surface-tint": "#aed50d",
+                "on-secondary-container": "#3b2600",
+                "error": "#ffb4ab",
+                "tertiary-fixed-dim": "#75d1ff",
+                "inverse-primary": "#526600",
+                "primary-container": "#c8f135",
+                "on-surface": "#e6e2de",
+                "tertiary-container": "#bfe7ff",
+                "on-secondary": "#432c00",
+                "surface-container-lowest": "#0f0e0c",
+                "on-primary": "#293500",
+                "surface-container-low": "#1d1b19",
+                "on-tertiary": "#003548",
+                "on-error-container": "#ffdad6",
+                "secondary-fixed": "#ffddaf",
+                "on-primary-container": "#566c00",
+                "surface-bright": "#3b3936",
+                "inverse-surface": "#e6e2de",
+                "on-background": "#e6e2de",
+                "secondary-container": "#c08512",
+                "error-container": "#93000a",
+                "primary": "#ffffef",
+                "primary-fixed": "#c9f236"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Space Grotesk"],
+                "body": ["IBM Plex Sans"],
+                "label": ["Space Grotesk"],
+                "serif": ["DM Serif Display"],
+                "mono": ["JetBrains Mono"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { background-color: #0f0e0c; }
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        .pixel-corner::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 4px; background: #c8f135;
+        }
+        .pixel-corner::after {
+            content: ''; position: absolute; bottom: 0; right: 0; width: 4px; height: 4px; background: #c8f135;
+        }
+        .dither-bg {
+            background-image: radial-gradient(#363432 1px, transparent 0);
+            background-size: 4px 4px;
+        }
+    </style>
+</head>
+<body class="text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<div class="scanlines"></div>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full flex justify-between items-center px-6 py-4 mx-auto bg-stone-950/80 backdrop-blur-md border-b border-white/10 z-50">
+<div class="text-2xl font-mono tracking-tighter text-lime-400">LUNA</div>
+<div class="hidden md:flex gap-8">
+<a class="text-lime-400 font-bold border-b-2 border-lime-400 pb-1 hover:text-amber-500 transition-colors duration-150 active:scale-95 transition-transform" href="#">[PROCESS]</a>
+<a class="text-stone-500 font-mono hover:text-amber-500 transition-colors duration-150 active:scale-95 transition-transform" href="#">[ARCHIVE]</a>
+<a class="text-stone-500 font-mono hover:text-amber-500 transition-colors duration-150 active:scale-95 transition-transform" href="#">[MANIFESTO]</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-stone-500 font-mono text-xs">EN/CH</span>
+<button class="text-lime-400 font-mono hover:text-amber-500 transition-colors duration-150">→ Resume</button>
+</div>
+</nav>
+<main class="pt-24 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Breadcrumb & Title -->
+<header class="mb-16">
+<div class="font-mono text-xs text-primary-container mb-4 tracking-widest uppercase">Work / Coffee Shop AI Agent</div>
+<h1 class="font-serif text-6xl md:text-8xl text-primary leading-none mb-12">Coffee Shop AI Agent</h1>
+<!-- Meta Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10">
+<div class="p-6 bg-surface-container-lowest">
+<span class="block font-mono text-[10px] text-stone-500 uppercase mb-2">ROLE</span>
+<span class="font-headline font-bold text-sm">AI Engineer + PM</span>
+</div>
+<div class="p-6 bg-surface-container-lowest">
+<span class="block font-mono text-[10px] text-stone-500 uppercase mb-2">TEAM</span>
+<span class="font-headline font-bold text-sm">Solo</span>
+</div>
+<div class="p-6 bg-surface-container-lowest">
+<span class="block font-mono text-[10px] text-stone-500 uppercase mb-2">TIMELINE</span>
+<span class="font-headline font-bold text-sm">3 months</span>
+</div>
+<div class="p-6 bg-surface-container-lowest">
+<span class="block font-mono text-[10px] text-stone-500 uppercase mb-2">TOOLS</span>
+<span class="font-headline font-bold text-sm">Prophet · XGBoost · Streamlit · Python</span>
+</div>
+</div>
+</header>
+<!-- Problem Statement -->
+<section class="mb-24 grid grid-cols-1 md:grid-cols-12 gap-8">
+<div class="md:col-span-8 p-8 bg-surface-container-low border-l-4 border-primary-container relative pixel-corner">
+<h2 class="font-mono text-xs text-secondary-fixed-dim uppercase mb-4 tracking-widest">[PROBLEM_LOG]</h2>
+<p class="text-2xl md:text-3xl font-light text-on-surface leading-relaxed">
+                    Coffee shop owners face a binary crisis: they either overbuy perishable inventory—leading to massive waste—or understock during peak surges, losing critical revenue. Current tools are generic spreadsheets that fail to account for weather, local events, or neighborhood nuances.
+                </p>
+</div>
+<div class="md:col-span-4 flex flex-col justify-end">
+<div class="p-6 bg-surface-container-highest border border-white/5">
+<div class="flex items-center gap-2 mb-4">
+<span class="w-3 h-3 bg-red-500"></span>
+<span class="font-mono text-[10px] uppercase">Inefficiency Metric</span>
+</div>
+<div class="font-serif text-4xl text-primary-container">22%</div>
+<p class="text-xs font-mono text-stone-400 mt-2">AVG. INVENTORY WASTE PER QUARTER</p>
+</div>
+</div>
+</section>
+<!-- Narrative Arc -->
+<section class="mb-24">
+<h2 class="font-serif text-4xl mb-12">Narrative Arc</h2>
+<div class="relative flex flex-col md:flex-row gap-8">
+<!-- Connector Line -->
+<div class="absolute top-1/2 left-0 w-full h-px border-t border-dashed border-white/20 hidden md:block -z-10"></div>
+<div class="flex-1 bg-surface-container p-6 border border-white/5 relative">
+<div class="absolute -top-3 left-6 px-2 bg-background font-mono text-[10px] text-primary-container">01_HYPOTHESIS</div>
+<h3 class="font-headline font-bold text-lg mb-2 uppercase italic text-secondary">WE THOUGHT</h3>
+<p class="text-sm text-stone-400 leading-relaxed">A single global Prophet model could predict sales across all product categories using historical data alone.</p>
+</div>
+<div class="flex-1 bg-surface-container p-6 border border-white/5 relative">
+<div class="absolute -top-3 left-6 px-2 bg-background font-mono text-[10px] text-primary-container">02_DISCOVERY</div>
+<h3 class="font-headline font-bold text-lg mb-2 uppercase italic text-secondary">DATA SHOWED</h3>
+<p class="text-sm text-stone-400 leading-relaxed">Separate patterns emerged: Pastries follow weekday commutes; Espresso follows weather; Merchandise follows events.</p>
+</div>
+<div class="flex-1 bg-surface-container p-6 border border-white/5 relative">
+<div class="absolute -top-3 left-6 px-2 bg-background font-mono text-[10px] text-primary-container">03_EXECUTION</div>
+<h3 class="font-headline font-bold text-lg mb-2 uppercase italic text-secondary">SO WE DID</h3>
+<p class="text-sm text-stone-400 leading-relaxed">Architected a 3-model ensemble tailored to specific inventory decay rates and consumer behaviors.</p>
+</div>
+</div>
+</section>
+<!-- Visual Evidence -->
+<section class="mb-24">
+<h2 class="font-serif text-4xl mb-12">Visual Evidence</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Wireframe Placeholder -->
+<div class="relative aspect-[16/10] bg-surface-container-highest overflow-hidden border border-white/10 group">
+<div class="absolute inset-0 dither-bg opacity-20"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center p-12">
+<img alt="AI Agent Interface" class="w-full h-full object-cover grayscale opacity-50 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100" data-alt="A clean modern dashboard interface with technical data visualizations, coffee inventory charts, and acid green accents in a dark UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTg9vMfOFqV5Btq7BieZ1GGyf_Wg54uOFvoTYtRJj3Rj_VX5ibcepcpxq7grokvCCRpQiG4jKOlZdjZaOCt7r5ZXbY1uIXRN3oh5WDTlEtP5o-21y4DkDoGI5RfmJ5dDiK_ADSO1Wejx_t18f6WiPrUWoteLABRLNVMlQ1CZiC7pDGgrcUK2U9Q7Dim0Y4EyyQxUw1jjLPIm81ypmVd-0Rm3jRvbLJtnSgiGbTc-TkV6bRcAH9_4eCEcjPp7lYzXAOLpVvaqQk2D4"/>
+<div class="absolute bottom-6 left-6 bg-stone-950 px-3 py-1 font-mono text-[10px] border border-primary-container text-primary-container uppercase">
+                            _SYSTEM_WIREFRAME_V2.0
+                        </div>
+</div>
+</div>
+<!-- Comparison Slider Simulation -->
+<div class="space-y-6">
+<div class="bg-surface-container p-6 border-l-2 border-white/10">
+<span class="font-mono text-[10px] text-stone-500 uppercase mb-4 block">BEFORE: LEGACY TRACKING</span>
+<div class="h-32 w-full bg-white/5 p-4 overflow-hidden font-mono text-[10px] text-stone-600">
+                            ID,DATE,ITEM,QTY,WASTE,WEATHER<br/>
+                            102,2023-01-01,Espresso,450,12,Cloudy<br/>
+                            103,2023-01-01,Croissant,40,15,Cloudy<br/>
+                            104,2023-01-01,Latte,320,8,Cloudy<br/>
+                            ... manual entry errors detected ...
+                        </div>
+</div>
+<div class="bg-surface-container p-6 border-l-2 border-primary-container relative">
+<span class="font-mono text-[10px] text-primary-container uppercase mb-4 block">AFTER: STREAMLIT DASHBOARD</span>
+<div class="h-32 w-full bg-primary-container/5 p-4 flex items-end gap-1">
+<div class="flex-1 bg-primary-container/20 h-[40%]"></div>
+<div class="flex-1 bg-primary-container/40 h-[60%]"></div>
+<div class="flex-1 bg-primary-container h-[90%]"></div>
+<div class="flex-1 bg-primary-container/60 h-[75%]"></div>
+<div class="flex-1 bg-primary-container/30 h-[45%]"></div>
+<div class="flex-1 bg-primary-container/50 h-[65%]"></div>
+</div>
+<div class="mt-4 flex justify-between font-mono text-[10px] text-primary-container">
+<span>PREDICTIVE_CONFIDENCE: 94.2%</span>
+<span>_SYNCED</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Outcomes & Reflection -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-16 border-t border-white/10 pt-16">
+<div>
+<h2 class="font-serif text-4xl mb-8">Success Metrics</h2>
+<ul class="space-y-8">
+<li class="flex gap-4">
+<span class="text-primary-container mt-1 material-symbols-outlined">analytics</span>
+<div>
+<strong class="block font-headline text-lg text-primary">3-Model Ensemble</strong>
+<p class="text-sm text-stone-400">Achieved 18% reduction in overall waste across 4 pilot locations.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="text-primary-container mt-1 material-symbols-outlined">code</span>
+<div>
+<strong class="block font-headline text-lg text-primary">Open Source</strong>
+<p class="text-sm text-stone-400">Shared core logic on GitHub, garnering 200+ stars from indie operators.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="text-primary-container mt-1 material-symbols-outlined">pedal_bike</span>
+<div>
+<strong class="block font-headline text-lg text-primary">Non-technical UX</strong>
+<p class="text-sm text-stone-400">Zero-training adoption rate by frontline baristas via WhatsApp integration.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container-high p-8 border border-white/10">
+<h2 class="font-serif text-4xl mb-8">Lessons Learned</h2>
+<div class="space-y-6">
+<div>
+<span class="font-mono text-[10px] text-secondary uppercase">01 / Adoption</span>
+<p class="text-sm text-stone-300 mt-2 italic">"UI matters as much as the weights. If the owner doesn't trust the chart, they won't follow the order suggestion."</p>
+</div>
+<div>
+<span class="font-mono text-[10px] text-secondary uppercase">02 / Tuning</span>
+<p class="text-sm text-stone-300 mt-2 italic">"Prophet requires intense tuning for local holiday spikes. A generic holiday calendar is insufficient for neighborhood festivals."</p>
+</div>
+<div>
+<span class="font-mono text-[10px] text-secondary uppercase">03 / User Research</span>
+<p class="text-sm text-stone-300 mt-2 italic">"The real breakthrough came from sitting behind the counter for 8 hours watching how orders actually get placed."</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Navigation Footer -->
+<footer class="w-full bg-stone-950 py-12 px-6 border-t border-white/5">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+<div class="flex flex-col gap-4 mb-8 md:mb-0">
+<a class="group flex items-center gap-4 text-stone-600 hover:text-amber-500 transition-all ease-in-out" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+<div class="flex flex-col">
+<span class="font-mono text-[10px] uppercase">Previous</span>
+<span class="font-headline font-bold text-white group-hover:text-amber-500 transition-colors">Job Pipeline</span>
+</div>
+</a>
+</div>
+<div class="flex flex-col items-center">
+<div class="text-lg font-bold text-lime-400 mb-2">LUNA</div>
+<div class="font-mono text-[10px] uppercase text-stone-600">© 2024 LUNA [TERMINAL_CURATOR]</div>
+</div>
+<div class="flex flex-col gap-4 mt-8 md:mt-0 text-right">
+<a class="group flex items-center gap-4 text-stone-600 hover:text-amber-500 transition-all ease-in-out" href="#">
+<div class="flex flex-col">
+<span class="font-mono text-[10px] uppercase">Next Project</span>
+<span class="font-headline font-bold text-white group-hover:text-amber-500 transition-colors">Yield Optimizer</span>
+</div>
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-12 pt-12 border-t border-white/5 flex gap-8 justify-center">
+<a class="font-mono text-[10px] text-stone-600 hover:text-amber-500 underline decoration-dotted" href="#">GITHUB</a>
+<a class="font-mono text-[10px] text-stone-600 hover:text-amber-500 underline decoration-dotted" href="#">LINKEDIN</a>
+<a class="font-mono text-[10px] text-stone-600 hover:text-amber-500 underline decoration-dotted" href="#">READ_CV</a>
+</div>
+</footer>
+</body></html>

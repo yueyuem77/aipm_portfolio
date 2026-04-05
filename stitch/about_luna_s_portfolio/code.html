@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#fdba49",
+                        "background": "#141311",
+                        "secondary-fixed-dim": "#fdba49",
+                        "surface-dim": "#141311",
+                        "on-primary-fixed-variant": "#3d4d00",
+                        "on-primary-fixed": "#171e00",
+                        "on-tertiary-fixed": "#001e2b",
+                        "surface": "#141311",
+                        "on-error": "#690005",
+                        "tertiary": "#fefeff",
+                        "on-secondary-fixed": "#281800",
+                        "surface-variant": "#363432",
+                        "on-surface-variant": "#c5c9ae",
+                        "surface-container": "#211f1d",
+                        "on-secondary-fixed-variant": "#614000",
+                        "on-tertiary-container": "#006c8f",
+                        "tertiary-fixed": "#c2e8ff",
+                        "primary-fixed-dim": "#aed50d",
+                        "inverse-on-surface": "#32302e",
+                        "outline": "#8f937b",
+                        "surface-container-high": "#2b2a27",
+                        "outline-variant": "#444934",
+                        "on-tertiary-fixed-variant": "#004d67",
+                        "surface-container-highest": "#363432",
+                        "surface-tint": "#aed50d",
+                        "on-secondary-container": "#3b2600",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#75d1ff",
+                        "inverse-primary": "#526600",
+                        "primary-container": "#c8f135",
+                        "on-surface": "#e6e2de",
+                        "tertiary-container": "#bfe7ff",
+                        "on-secondary": "#432c00",
+                        "surface-container-lowest": "#0f0e0c",
+                        "on-primary": "#293500",
+                        "surface-container-low": "#1d1b19",
+                        "on-tertiary": "#003548",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#ffddaf",
+                        "on-primary-container": "#566c00",
+                        "surface-bright": "#3b3936",
+                        "inverse-surface": "#e6e2de",
+                        "on-background": "#e6e2de",
+                        "secondary-container": "#c08512",
+                        "error-container": "#93000a",
+                        "primary": "#ffffef",
+                        "primary-fixed": "#c9f236"
+                    },
+                    "fontFamily": {
+                        "display": ["DM Serif Display", "serif"],
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "body": ["IBM Plex Sans", "sans-serif"],
+                        "label": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0F0E0C;
+            color: #e6e2de;
+            -webkit-font-smoothing: antialiased;
+        }
+        .scanline {
+            background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+        .dither-bg {
+            background-image: radial-gradient(#c8f135 0.5px, transparent 0.5px);
+            background-size: 3px 3px;
+            opacity: 0.1;
+        }
+        .corner-mark::before, .corner-mark::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #c8f135;
+        }
+        .corner-tl::before { top: 0; left: 0; }
+        .corner-tr::before { top: 0; right: 0; }
+        .corner-bl::before { bottom: 0; left: 0; }
+        .corner-br::before { bottom: 0; right: 0; }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Fixed Overlay Textures -->
+<div class="fixed inset-0 scanline z-[100] opacity-30 pointer-events-none"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 mx-auto bg-stone-950/80 backdrop-blur-md border-b border-white/10 z-50">
+<div class="text-2xl font-mono tracking-tighter text-lime-400">LUNA</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-stone-500 font-mono hover:text-amber-500 transition-colors duration-150" href="#">[ARCHIVE]</a>
+<a class="text-stone-500 font-mono hover:text-amber-500 transition-colors duration-150" href="#">[PROCESS]</a>
+<a class="text-lime-400 font-bold border-b-2 border-lime-400 pb-1 font-mono hover:text-amber-500 transition-colors duration-150" href="#">[MANIFESTO]</a>
+</nav>
+<div class="flex items-center space-x-6">
+<span class="text-stone-500 font-mono text-xs uppercase">EN/CH</span>
+<button class="text-lime-400 font-mono hover:text-amber-500 transition-colors active:scale-95">→ Resume</button>
+</div>
+</header>
+<main class="pt-24 pb-20">
+<!-- Hero / The Story Section -->
+<section class="max-w-7xl mx-auto px-6 mb-24 grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-8">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-[1px] bg-primary-container"></div>
+<span class="font-mono text-xs text-primary-container tracking-widest uppercase">File_Identifier: LUNA_JOURNEY.LOG</span>
+</div>
+<h1 class="font-display text-7xl md:text-8xl text-on-surface mb-10 leading-tight">THE STORY</h1>
+<div class="max-w-[680px] space-y-6 text-[17px] leading-relaxed text-on-surface-variant font-body">
+<p>
+                        The trajectory began in the neural pathways of cognitive science. My fascination wasn't just with how humans think, but with the systematic translation of those thoughts into actionable data. This curiosity led to deep immersion in graduate-level statistics, where I learned that numbers are the most honest narrative a product can tell.
+                    </p>
+<p>
+                        The pivot to AI Product Management was inevitable—a convergence of human psychology and technical orchestration. I moved from analyzing cognitive biases to building systems that must account for them. 
+                    </p>
+<p>
+                        Operating at the intersection of the world's most dynamic tech hubs—from the rapid prototyping culture of Shenzhen and the high-finance rigor of Hong Kong to the scale-first philosophy of the US/China corridor—I’ve developed a cross-market fluency that transcends borders. I don't just ship products; I translate complex technical possibilities into human-centric utility across cultural boundaries.
+                    </p>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-end">
+<div class="bg-surface-container-low p-6 relative corner-mark corner-tl corner-br">
+<div class="absolute inset-0 dither-bg"></div>
+<div class="relative z-10 font-mono text-xs space-y-2">
+<div class="flex justify-between"><span>_ORIGIN</span><span class="text-secondary">COG_SCI</span></div>
+<div class="flex justify-between"><span>_CLASS</span><span class="text-primary-container">AI_ARCHITECT</span></div>
+<div class="flex justify-between"><span>_XP_TIER</span><span class="text-secondary">GLOBAL_LEAD</span></div>
+<div class="w-full bg-surface-container-highest h-1 mt-4">
+<div class="bg-primary-container h-full w-[88%]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Humanizing Strip -->
+<section class="w-full overflow-hidden py-12 mb-24 bg-surface-container-lowest">
+<div class="flex flex-wrap justify-center gap-12 px-6">
+<div class="relative group">
+<div class="absolute -inset-1 bg-primary-container/20 blur opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img class="w-[340px] h-[280px] object-cover border-[3px] border-surface-variant -rotate-2 group-hover:rotate-0 transition-transform duration-500 shadow-xl" data-alt="Candid medium shot of a professional woman focusing on multiple monitors in a dim, modern studio environment with green ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrsqPGM1hJ60HZQ-e-PuaIUq_EmSyGwsLzJ-Wf25yjGsEJ4Qa2kxpAleOSSocU6zeEpQnqFR3so-0WUWsX4rURsqil27nkKfh1vvh22vzke5DUM_gGEqvS4W3K-TtnjhqQ7rfTP28uKCXgnmsaSf3wCsmFiRWcA92yw7tQIckl9f2rWZ8KGN_K04fVMjQNHP9G1J-5yaRgi-Xsd71hEyuzXLvCTZDYVaPgU128dY1-wet-bo1NFKMmblCgZTsWe76ZIDW-wcRmd9Y"/>
+<div class="absolute bottom-4 left-4 bg-stone-950/90 px-3 py-1 text-[10px] font-mono text-primary-container">LOG_01: EXECUTION</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-1 bg-secondary/20 blur opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img class="w-[340px] h-[280px] object-cover border-[3px] border-surface-variant rotate-1 group-hover:rotate-0 transition-transform duration-500 shadow-xl" data-alt="Close up of a hand drawing complex architectural flowcharts on a glass whiteboard with neon markers, shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4PAFCD_HNTaR92ydNA8hql1XaG-uzUQiBQWEYuXCvuldlV1qgUeeaRrzvwSQ7gqoDK6lfnoVH8VNAyiLq2Q8G1LAiKCOiiIgA6nAPfL8poP-5b2NR-gTBRbWm38NpqVXhFUgWQ-dGrw13oGU2d7Zpp29baVJ8i_99IX5Yt1b9OB49_Ce5vfzIelnGZG0tqtkDGvHo0SPkpAA2CRiTUejVtqP0jTNVSxg--f9SENuAJRiLCANzr93QMfBAKuqjVuLvd2pJOZSXG0U"/>
+<div class="absolute bottom-4 left-4 bg-stone-950/90 px-3 py-1 text-[10px] font-mono text-secondary">LOG_02: IDEATION</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-1 bg-tertiary-fixed-dim/20 blur opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img class="w-[340px] h-[280px] object-cover border-[3px] border-surface-variant rotate-3 group-hover:rotate-0 transition-transform duration-500 shadow-xl" data-alt="Cinematic wide shot of a dense Hong Kong cityscape at twilight with glowing neon signs and a futuristic cyberpunk aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeUlQOKs7Twn6IhJVxDKQKLC7WAp3-ljidoUcLYPg89hjEsP-dTTmkjOWVAh8W9gwz0RNvz7kLfsq8-Efas7zv_cQdziRF05lJNOAlCsD5vvUeI3GJUAzgNocC5kVD27hZ4aKW9Kr8dZZpuiV6Tzg54FaqAgSL71kFFm7rPp2pM3EyuonDXCQi7ROFduxBspVqxHr9qOSCI61ThITgiIRnaff7fFjHPAKARnBJ6vWcfmCwN5EC08OgtdsC31QaNYKwqM1Xznd3RdM"/>
+<div class="absolute bottom-4 left-4 bg-stone-950/90 px-3 py-1 text-[10px] font-mono text-tertiary-fixed-dim">LOG_03: CONTEXT</div>
+</div>
+</div>
+</section>
+<!-- Core Values Section -->
+<section class="max-w-7xl mx-auto px-6 mb-32">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-4">
+<h2 class="font-display text-5xl text-on-surface sticky top-32">DESIGN PHILOSOPHY</h2>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Value Card 1 -->
+<div class="bg-surface-container p-8 border-l-4 border-secondary relative group">
+<div class="text-secondary mb-4">
+<span class="material-symbols-outlined text-4xl">analytics</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-3">Measure Before Assuming</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Statistical rigor is the foundation. I replace "gut feelings" with controlled experimentation and data-driven hypotheses.</p>
+</div>
+<!-- Value Card 2 -->
+<div class="bg-surface-container p-8 border-l-4 border-secondary relative group">
+<div class="text-secondary mb-4">
+<span class="material-symbols-outlined text-4xl">psychology</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-3">Cognitive Empathy First</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Understanding the mental models of users is paramount. Systems should adapt to humans, not the other way around.</p>
+</div>
+<!-- Value Card 3 -->
+<div class="bg-surface-container p-8 border-l-4 border-secondary relative group">
+<div class="text-secondary mb-4">
+<span class="material-symbols-outlined text-4xl">bolt</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-3">Ship to Learn</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Perfect is the enemy of the deployed. High-velocity shipping cycles provide the only real feedback that matters.</p>
+</div>
+<!-- Value Card 4 -->
+<div class="bg-surface-container p-8 border-l-4 border-secondary relative group">
+<div class="text-secondary mb-4">
+<span class="material-symbols-outlined text-4xl">language</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-3">Cross-market Fluency</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Building for the globe requires more than translation; it requires cultural context and regional infrastructure awareness.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Expanded Character Sheet Section -->
+<section class="max-w-7xl mx-auto px-6">
+<div class="border-t border-outline-variant/30 pt-16">
+<h2 class="font-display text-5xl text-on-surface mb-12">EXPANDED SKILLS</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-16">
+<!-- Skill Block 1: AI -->
+<div class="space-y-6">
+<div class="flex items-center gap-2 font-mono text-xs text-primary-container">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+                            [AI/LLM_MODELS]
+                        </div>
+<div class="space-y-4">
+<div class="group">
+<div class="flex justify-between font-mono text-xs mb-1 uppercase"><span>prompt eng</span><span>95%</span></div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-full bg-primary-container w-[95%]"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between font-mono text-xs mb-1 uppercase"><span>fine-tuning</span><span>70%</span></div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-full bg-primary-container w-[70%]"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between font-mono text-xs mb-1 uppercase"><span>RAG</span><span>85%</span></div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-full bg-primary-container w-[85%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Skill Block 2: Technical -->
+<div class="space-y-6">
+<div class="flex items-center gap-2 font-mono text-xs text-primary-container">
+<span class="material-symbols-outlined text-sm">terminal</span>
+                            [TECHNICAL_STACK]
+                        </div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface font-mono text-[10px] border border-outline-variant/50">PYTHON</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface font-mono text-[10px] border border-outline-variant/50">STREAMLIT</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface font-mono text-[10px] border border-outline-variant/50">SQL</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface font-mono text-[10px] border border-outline-variant/50">CLAUDE_SDK</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface font-mono text-[10px] border border-outline-variant/50">PANDAS</span>
+</div>
+</div>
+<!-- Skill Block 3: PM Craft -->
+<div class="space-y-6">
+<div class="flex items-center gap-2 font-mono text-xs text-primary-container">
+<span class="material-symbols-outlined text-sm">architecture</span>
+                            [PM_CRAFT]
+                        </div>
+<ul class="space-y-2 font-mono text-xs text-on-surface-variant">
+<li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary-container"></div> PRD &amp; Technical Spec Writing</li>
+<li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary-container"></div> Strategic Roadmapping</li>
+<li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary-container"></div> Behavioral User Research</li>
+<li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary-container"></div> A/B Test Orchestration</li>
+</ul>
+</div>
+<!-- Skill Block 4: Academic -->
+<div class="space-y-6">
+<div class="flex items-center gap-2 font-mono text-xs text-secondary">
+<span class="material-symbols-outlined text-sm">school</span>
+                            [ACADEMIC_FOUNDATION]
+                        </div>
+<div class="bg-surface-container-low p-4 border border-outline-variant/20">
+<div class="font-headline font-bold text-sm mb-1 uppercase">Cog Sci &amp; Quant Methods</div>
+<div class="text-xs font-mono text-on-surface-variant opacity-70">Focus: Neural Networks, Statistics, Decision Theory</div>
+</div>
+</div>
+<!-- Skill Block 5: Languages -->
+<div class="space-y-6">
+<div class="flex items-center gap-2 font-mono text-xs text-secondary">
+<span class="material-symbols-outlined text-sm">translate</span>
+                            [LANGUAGES]
+                        </div>
+<div class="space-y-3 font-mono text-xs uppercase">
+<div class="flex items-center gap-4">
+<span class="w-20">English</span>
+<span class="text-secondary tracking-tighter">████████</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-20">Chinese</span>
+<span class="text-secondary tracking-tighter">██████</span>
+</div>
+</div>
+</div>
+<!-- Skill Block 6: Markets -->
+<div class="space-y-6">
+<div class="flex items-center gap-2 font-mono text-xs text-secondary">
+<span class="material-symbols-outlined text-sm">public</span>
+                            [MARKET_EXPOSURE]
+                        </div>
+<div class="space-y-3 font-mono text-xs uppercase">
+<div class="flex items-center gap-4">
+<span class="w-12">US</span>
+<span class="text-primary-container tracking-tighter">████</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-12">HK</span>
+<span class="text-primary-container tracking-tighter">█████</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-12">China</span>
+<span class="text-primary-container tracking-tighter">████████</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-950 border-t border-white/5 py-12 px-6">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto">
+<div class="text-lg font-bold text-lime-400 mb-6 md:mb-0">LUNA</div>
+<div class="flex space-x-8 mb-6 md:mb-0">
+<a class="text-stone-600 font-mono text-xs uppercase hover:text-amber-500 underline decoration-dotted transition-all ease-in-out" href="#">GITHUB</a>
+<a class="text-stone-600 font-mono text-xs uppercase hover:text-amber-500 underline decoration-dotted transition-all ease-in-out" href="#">LINKEDIN</a>
+<a class="text-stone-600 font-mono text-xs uppercase hover:text-amber-500 underline decoration-dotted transition-all ease-in-out" href="#">READ_CV</a>
+</div>
+<div class="text-stone-600 font-mono text-xs uppercase">© 2024 LUNA [TERMINAL_CURATOR]</div>
+</div>
+</footer>
+</body></html>

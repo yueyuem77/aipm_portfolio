@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUNA | AI Product Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#E8A838",
+                    "background": "#F5F2EB",
+                    "surface": "#F5F2EB",
+                    "on-surface": "#0F0E0C",
+                    "on-surface-variant": "#4A4947",
+                    "surface-container": "#EBE8E0",
+                    "surface-container-low": "#F0EDE5",
+                    "surface-container-lowest": "#F5F2EB",
+                    "surface-container-high": "#E5E2DA",
+                    "surface-container-highest": "#DFDCD4",
+                    "primary": "#0F0E0C",
+                    "primary-container": "#C8F135",
+                    "on-primary-container": "#171E00",
+                    "outline": "#8F8D86",
+                    "outline-variant": "#C9C7BF",
+                    "error": "#BA1A1A"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["IBM Plex Sans"],
+                    "label": ["Space Grotesk"],
+                    "display": ["DM Serif Display"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+        .dither-bg {
+            background-image: radial-gradient(#0F0E0C 0.5px, transparent 0.5px);
+            background-size: 3px 3px;
+        }
+        .glow-amber {
+            filter: blur(120px);
+            background: radial-gradient(circle, #E8A838 0%, transparent 70%);
+        }
+        .text-acid { color: #8DAA25; } /* Adjusted for better contrast on light */
+        .bg-acid { background-color: #C8F135; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen relative overflow-x-hidden">
+<!-- Global Layout Overlays -->
+<div class="fixed inset-0 scanline z-[60] opacity-30"></div>
+<div class="fixed top-[-200px] right-[-100px] w-[600px] h-[600px] glow-amber opacity-10 z-0"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 mx-auto bg-background/80 backdrop-blur-md border-b border-outline-variant z-50">
+<div class="text-2xl font-mono tracking-tighter text-on-surface font-bold">LUNA</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface/60 font-mono hover:text-secondary transition-colors duration-150" href="#">[ARCHIVE]</a>
+<a class="text-on-surface/60 font-mono hover:text-secondary transition-colors duration-150" href="#">[PROCESS]</a>
+<a class="text-on-surface/60 font-mono hover:text-secondary transition-colors duration-150" href="#">[MANIFESTO]</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="text-on-surface/60 font-mono text-xs uppercase">EN/CH</span>
+<button class="text-on-surface font-mono border border-on-surface/30 px-4 py-1 hover:bg-on-surface hover:text-background transition-all active:scale-95">→ Resume</button>
+</div>
+</header>
+<main class="relative z-10 pt-24 pb-20">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center min-h-[80vh]">
+<div class="md:col-span-7 flex flex-col items-start gap-6">
+<div class="flex items-center gap-3">
+<span class="font-mono text-on-primary-container bg-primary-container px-2 py-1 text-sm tracking-widest uppercase">AI PRODUCT MANAGER · LVL 03</span>
+</div>
+<h1 class="font-display text-6xl md:text-8xl leading-[0.9] text-primary">
+                Designing for humans. <br/>
+<span class="text-acid">Powered by data.</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-xl font-light">
+                Full-stack AI PM with graduate training in cognitive science and quantitative methods. Transforming complex neural patterns into intuitive user interfaces.
+            </p>
+<div class="flex flex-wrap gap-2">
+<span class="border border-outline-variant px-3 py-1 font-mono text-xs uppercase text-outline">AI PM</span>
+<span class="border border-outline-variant px-3 py-1 font-mono text-xs uppercase text-outline">Full-stack</span>
+<span class="border border-outline-variant px-3 py-1 font-mono text-xs uppercase text-outline">Prompt Eng</span>
+<span class="border border-outline-variant px-3 py-1 font-mono text-xs uppercase text-outline">Cog Sci + Quant</span>
+</div>
+<div class="flex items-center gap-6 mt-4">
+<button class="bg-on-surface text-background px-8 py-3 font-bold uppercase tracking-widest text-sm hover:bg-on-surface/90 transition-colors">→ View Work</button>
+<a class="font-mono text-sm underline decoration-dotted underline-offset-4 hover:text-acid transition-colors" href="#">_DOWNLOAD_RESUME</a>
+</div>
+</div>
+<div class="md:col-span-5 relative group">
+<div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-on-surface"></div>
+<div class="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-on-surface"></div>
+<div class="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-on-surface"></div>
+<div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-on-surface"></div>
+<div class="bg-white h-[500px] w-full relative overflow-hidden flex flex-col justify-end p-8 border border-outline-variant shadow-sm">
+<div class="absolute inset-0 dither-bg opacity-5"></div>
+<div class="relative z-10 font-mono text-on-surface space-y-2 text-sm">
+<p class="bg-on-surface text-background inline-block px-2 py-1">PROFILE.YAML</p>
+<p>name: Luna</p>
+<p>role: AI PM</p>
+<p>lvl: 03</p>
+<p>xp: ████░</p>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 opacity-10">
+<div class="w-full h-full border-4 border-on-surface rotate-45 animate-pulse"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Selected Work Section -->
+<section class="max-w-7xl mx-auto px-6 py-32">
+<div class="flex items-baseline justify-between mb-16">
+<h2 class="font-display text-4xl text-primary">SELECTED WORK</h2>
+<div class="h-px flex-grow mx-8 bg-outline-variant"></div>
+<span class="font-mono text-sm text-outline">[2024-2025_FILES]</span>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Card 1 -->
+<div class="group relative bg-white p-6 transition-all border border-outline-variant hover:border-on-surface">
+<div class="absolute top-0 left-0 w-2 h-2 bg-on-surface"></div>
+<div class="absolute top-0 right-0 w-2 h-2 bg-on-surface"></div>
+<div class="absolute bottom-0 left-0 w-2 h-2 bg-on-surface"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 bg-on-surface"></div>
+<div class="aspect-video bg-surface-container-highest mb-6 overflow-hidden relative">
+<div class="absolute inset-0 dither-bg opacity-5"></div>
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Abstract technical interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBORpC8bzOOPvH8nHv9P64SYSVuKLSqCmDPmHN-XqnUMJJ6sS0I5ZOywIKjvj8WYswDtcv2ci0bh1kE_ceDkmVt2hP6N7kG1-BclS38VBuaA_tDk25BtOk65pIaJMZ4T90UzNu0NDEc_Tl0JVL4fSs_Jdj_MqFrMwMyRHujsK2DnOcorvvYoM4-D5V7vX4L_kGt5uP_vFcNpvm9ZdjeRdhTe9eNRDD7qz09q9c-jtDcNMxWziiyWm9aynDkZ6WWwngjiZCK63f7FuE"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-2xl font-bold uppercase tracking-tight">Coffee Shop AI Agent</h3>
+<p class="font-mono text-xs text-acid font-bold mt-1">2024–25</p>
+</div>
+<span class="material-symbols-outlined text-acid font-bold">trending_up</span>
+</div>
+<p class="text-on-surface-variant font-body mb-6">↑ 3-model ensemble · Open source agentic framework for small business operational automation.</p>
+<div class="flex gap-2">
+<span class="bg-surface-container-highest px-3 py-1 font-mono text-[10px] uppercase text-on-surface">LVL. 99 AI</span>
+<span class="bg-surface-container-highest px-3 py-1 font-mono text-[10px] uppercase text-on-surface">LVL. 80 PYTHON</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative bg-white p-6 transition-all border border-outline-variant hover:border-on-surface">
+<div class="absolute top-0 left-0 w-2 h-2 bg-on-surface"></div>
+<div class="absolute top-0 right-0 w-2 h-2 bg-on-surface"></div>
+<div class="absolute bottom-0 left-0 w-2 h-2 bg-on-surface"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 bg-on-surface"></div>
+<div class="aspect-video bg-surface-container-highest mb-6 overflow-hidden relative">
+<div class="absolute inset-0 dither-bg opacity-5"></div>
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Stylized pipeline diagram" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpJqrkZi7h3KiOtqaG6qfSynHQR1w34StypLplOrXnfYtpUDjpOZQo_h3MALIKFOA2c1dyvv_w6m9rV0PDTO928zMjjXDyOwwEoneiMTDa8biF1dTFVWvKgZyVnLOc--ojzMyRbx1SY-Qd-SYoWDUghOyvsGV2KCXiJOYdL55_b5t0dSPdVkoyqi0DcVNL6yy4qJEeY3XzppWkAKRqz600ngCxz_a5_A5VWowMbfTeJRgMzG5FjbpBoEIwL-aVcR3kmYUQvu97dnQ"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-2xl font-bold uppercase tracking-tight">Job Application Pipeline</h3>
+<p class="font-mono text-xs text-acid font-bold mt-1">2025</p>
+</div>
+<span class="material-symbols-outlined text-acid font-bold">plumbing</span>
+</div>
+<p class="text-on-surface-variant font-body mb-6">↑ Personalized outreach at scale using LLMs to analyze role requirements and candidate fit metrics.</p>
+<div class="flex gap-2">
+<span class="bg-surface-container-highest px-3 py-1 font-mono text-[10px] uppercase text-on-surface">LVL. 90 AGENTIC</span>
+<span class="bg-surface-container-highest px-3 py-1 font-mono text-[10px] uppercase text-on-surface">LVL. 85 LLM</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Who I Am Section -->
+<section class="max-w-7xl mx-auto px-6 py-32 bg-surface-container-low/50">
+<h2 class="font-display text-4xl text-primary mb-16">WHO I AM</h2>
+<div class="grid md:grid-cols-3 gap-12">
+<!-- Identity Tags -->
+<div class="space-y-4">
+<p class="font-mono text-xs text-outline uppercase tracking-widest mb-6">[IDENTITY_CLUSTER]</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-acid border-b border-acid font-mono text-sm py-1 font-bold">Hobby Barista</span>
+<span class="text-on-surface border-b border-outline-variant font-mono text-sm py-1">Tech Builder</span>
+<span class="text-on-surface border-b border-outline-variant font-mono text-sm py-1">Quant Brain</span>
+<span class="text-acid border-b border-acid font-mono text-sm py-1 font-bold">Cog Sci Nerd</span>
+<span class="text-on-surface border-b border-outline-variant font-mono text-sm py-1">Cross-cultural PM</span>
+<span class="text-secondary border-b border-secondary font-mono text-sm py-1 font-bold">Open Source</span>
+<span class="text-on-surface border-b border-outline-variant font-mono text-sm py-1">Data Storyteller</span>
+<span class="text-acid border-b border-acid font-mono text-sm py-1 font-bold">Overthinker → Product Thinker</span>
+</div>
+</div>
+<!-- Character Sheet -->
+<div class="bg-white p-6 border border-outline-variant border-l-4 border-l-acid shadow-sm">
+<div class="font-mono text-[10px] text-on-surface/60 mb-4 font-bold">LUNA AI PRODUCT MANAGER LVL 03</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-1 text-on-surface">
+<span>XP PROGRESS</span>
+<span>87%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest flex">
+<div class="h-full bg-acid w-[87%]"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6">
+<div class="space-y-3">
+<div>
+<div class="text-[10px] font-mono text-outline">STR: QUANTITATIVE</div>
+<div class="text-on-surface text-xs font-bold tracking-tight">████</div>
+</div>
+<div>
+<div class="text-[10px] font-mono text-outline">INT: COGNITIVE SCI</div>
+<div class="text-on-surface text-xs font-bold tracking-tight">█████</div>
+</div>
+</div>
+<div class="space-y-3">
+<div>
+<div class="text-[10px] font-mono text-outline">DEX: FULL-STACK</div>
+<div class="text-on-surface text-xs font-bold tracking-tight">███</div>
+</div>
+<div>
+<div class="text-[10px] font-mono text-outline">CHA: STORYTELLING</div>
+<div class="text-on-surface text-xs font-bold tracking-tight">████</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Facts -->
+<div class="space-y-6">
+<p class="font-mono text-xs text-outline uppercase tracking-widest">[TERMINAL_DATA]</p>
+<div class="space-y-4 font-mono text-sm">
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-acid text-lg font-bold">location_on</span>
+<span class="text-on-surface-variant">Shenzhen / Beijing / Shanghai</span>
+</div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-acid text-lg font-bold">translate</span>
+<span class="text-on-surface-variant">English · 中文</span>
+</div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-acid text-lg font-bold">work</span>
+<span class="text-on-surface-variant">AI PM roles · Full-time</span>
+</div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-acid text-lg font-bold">code</span>
+<span class="text-secondary font-bold underline underline-offset-4">github.com/luna</span>
+</div>
+<div class="flex gap-4 items-center border-t border-outline-variant pt-4">
+<span class="material-symbols-outlined text-acid text-lg font-bold">school</span>
+<span class="text-on-surface-variant text-xs">UC Irvine · Cog Sci + Quant</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-t border-outline-variant py-12 px-6">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="text-lg font-bold text-on-surface font-mono tracking-tighter">LUNA · AI Product Manager</div>
+<p class="text-on-surface/40 font-mono text-[10px] uppercase mt-2">© 2024 LUNA [TERMINAL_CURATOR]</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 font-mono text-xs uppercase text-on-surface/60">
+<a class="hover:text-secondary underline decoration-dotted transition-all ease-in-out" href="#">LINKEDIN</a>
+<a class="hover:text-secondary underline decoration-dotted transition-all ease-in-out" href="#">GITHUB</a>
+<a class="hover:text-secondary underline decoration-dotted transition-all ease-in-out" href="#">EMAIL</a>
+<a class="hover:text-secondary underline decoration-dotted transition-all ease-in-out" href="#">微信</a>
+<a class="text-acid font-bold hover:text-secondary transition-all ease-in-out" href="#">→ Download Resume</a>
+</div>
+</div>
+</footer>
+</body></html>

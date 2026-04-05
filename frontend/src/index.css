@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #F5F2EB;
+  --color-surface: #F5F2EB;
+  --color-surface-container: #EBE8E0;
+  --color-surface-container-low: #F0EDE5;
+  --color-surface-container-lowest: #F5F2EB;
+  --color-surface-container-high: #E5E2DA;
+  --color-surface-container-highest: #DFDCD4;
+  --color-primary: #0F0E0C;
+  --color-primary-container: #C8F135;
+  --color-on-primary-container: #171E00;
+  --color-secondary: #E8A838;
+  --color-on-surface: #0F0E0C;
+  --color-on-surface-variant: #4A4947;
+  --color-outline: #8F8D86;
+  --color-outline-variant: #C9C7BF;
+  --color-acid: #8DAA25;
+  --color-acid-bg: #C8F135;
+  --color-error: #BA1A1A;
+
+  --font-family-display: 'DM Serif Display', serif;
+  --font-family-headline: 'Space Grotesk', sans-serif;
+  --font-family-body: 'IBM Plex Sans', sans-serif;
+  --font-family-label: 'Space Grotesk', sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Scanline CRT overlay */
+.scanline {
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Dither dot pattern */
+.dither-bg {
+  background-image: radial-gradient(#0F0E0C 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+/* Ambient glow */
+.glow-amber {
+  filter: blur(120px);
+  background: radial-gradient(circle, #E8A838 0%, transparent 70%);
+}
+
+/* Pixel corner marks */
+.pixel-corner {
+  position: relative;
+}
+.pixel-corner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background: var(--color-primary-container);
+}
+.pixel-corner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 4px;
+  height: 4px;
+  background: var(--color-primary-container);
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children for hero */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stagger > * {
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards;
+}
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 80ms; }
+.stagger > *:nth-child(3) { animation-delay: 160ms; }
+.stagger > *:nth-child(4) { animation-delay: 240ms; }
+.stagger > *:nth-child(5) { animation-delay: 320ms; }
+.stagger > *:nth-child(6) { animation-delay: 400ms; }
